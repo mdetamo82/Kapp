@@ -1,0 +1,115 @@
+"Table","Column","Type","Null?","Key"
+"attachments","id","int(10) unsigned","NO","PRI"
+"attachments","attachable_type","varchar(255)","NO","MUL"
+"attachments","attachable_id","int(10) unsigned","NO",
+"attachments","file_name","varchar(255)","NO",
+"attachments","original_name","varchar(255)","NO",
+"attachments","file_path","varchar(255)","NO",
+"attachments","file_type","varchar(50)","YES",
+"attachments","file_size","int(10) unsigned","NO",
+"attachments","category","enum('invoice','contract','id_document','other')","NO","MUL"
+"attachments","created_at","datetime","YES",
+"attachments","created_by","int(10) unsigned","YES",
+"audit_logs","id","bigint(20) unsigned","NO","PRI"
+"audit_logs","user_id","int(10) unsigned","YES","MUL"
+"audit_logs","module","varchar(100)","NO","MUL"
+"audit_logs","action","varchar(50)","NO","MUL"
+"audit_logs","record_id","bigint(20) unsigned","YES",
+"audit_logs","old_values","longtext","YES",
+"audit_logs","new_values","longtext","YES",
+"audit_logs","ip_address","varchar(45)","YES",
+"audit_logs","user_agent","varchar(500)","YES",
+"audit_logs","created_at","timestamp","NO","MUL"
+"backup_logs","id","int(11)","NO","PRI"
+"backup_logs","file_name","varchar(255)","NO",
+"backup_logs","file_size","bigint(20)","NO",
+"backup_logs","type","enum('Manual','Cron')","YES",
+"backup_logs","created_by","int(11)","YES",
+"backup_logs","created_at","datetime","YES",
+"backup_settings","id","int(11) unsigned","NO","PRI"
+"backup_settings","auto_backup","tinyint(1)","YES",
+"backup_settings","backup_frequency","varchar(20)","YES",
+"backup_settings","retention_period","int(11)","YES",
+"backup_settings","backup_time","time","YES",
+"backup_settings","notify_email","varchar(255)","YES",
+"backup_settings","compress_backups","tinyint(1)","YES",
+"backup_settings","created_at","datetime","YES",
+"backup_settings","updated_at","datetime","YES",
+"customers","customer_id","int(10) unsigned","NO","PRI"
+"customers","name","varchar(150)","NO","MUL"
+"customers","address","varchar(255)","YES",
+"customers","phone","varchar(30)","YES","MUL"
+"customers","customer_code","varchar(20)","YES","UNI"
+"customers","photo_path","varchar(255)","YES",
+"customers","photo_disk","varchar(50)","YES",
+"customers","photo_original_name","varchar(255)","YES",
+"customers","photo_mime_type","varchar(100)","YES",
+"customers","photo_size","int(10) unsigned","YES",
+"customers","photo_width","smallint(5) unsigned","YES",
+"customers","photo_height","smallint(5) unsigned","YES",
+"customers","qr_code_path","varchar(255)","YES",
+"customers","qr_code_disk","varchar(50)","YES",
+"customers","barcode_path","varchar(255)","YES",
+"customers","barcode_disk","varchar(50)","YES",
+"customers","created_at","datetime","NO","MUL"
+"customers","updated_at","datetime","YES",
+"customers","deleted_at","datetime","YES","MUL"
+"customers","created_by","int(10) unsigned","YES","MUL"
+"customers","updated_by","int(10) unsigned","YES","MUL"
+"customers","deleted_by","int(10) unsigned","YES","MUL"
+"groups","id","mediumint(8) unsigned","NO","PRI"
+"groups","name","varchar(20)","NO",
+"groups","description","varchar(100)","NO",
+"group_permissions","id","int(11)","NO","PRI"
+"group_permissions","group_id","mediumint(8) unsigned","NO","MUL"
+"group_permissions","permission_id","int(11)","NO","MUL"
+"group_permissions","created_at","timestamp","NO",
+"login_attempts","id","int(11) unsigned","NO","PRI"
+"login_attempts","ip_address","varchar(45)","NO",
+"login_attempts","login","varchar(100)","NO",
+"login_attempts","time","int(11) unsigned","YES",
+"migrations","version","bigint(20)","NO",
+"permissions","id","int(11)","NO","PRI"
+"permissions","name","varchar(255)","NO","UNI"
+"permissions","description","varchar(255)","NO",
+"permissions","controller","varchar(255)","NO",
+"permissions","method","varchar(255)","NO",
+"permissions","created_at","timestamp","NO",
+"permissions","updated_at","timestamp","NO",
+"permissions_generated","id","int(11)","NO","PRI"
+"permissions_generated","timestamp","int(11)","NO",
+"samples","id","int(10) unsigned","NO","PRI"
+"samples","name","varchar(150)","NO","MUL"
+"samples","description","text","YES",
+"samples","status","tinyint(1)","NO","MUL"
+"samples","created_at","timestamp","NO","MUL"
+"samples","updated_at","timestamp","NO",
+"samples","deleted_at","timestamp","YES","MUL"
+"super_admin_identity","user_id","int(10) unsigned","NO","PRI"
+"super_admin_identity","granted_by","int(10) unsigned","YES","MUL"
+"super_admin_identity","grant_method","enum('migration_bootstrap','admin_action')","NO",
+"super_admin_identity","created_at","datetime","NO",
+"users","id","int(11) unsigned","NO","PRI"
+"users","ip_address","varchar(45)","NO",
+"users","username","varchar(100)","YES",
+"users","password","varchar(255)","NO",
+"users","email","varchar(254)","NO","UNI"
+"users","activation_selector","varchar(255)","YES","UNI"
+"users","activation_code","varchar(255)","YES",
+"users","forgotten_password_selector","varchar(255)","YES","UNI"
+"users","forgotten_password_code","varchar(255)","YES",
+"users","forgotten_password_time","int(11) unsigned","YES",
+"users","remember_selector","varchar(255)","YES","UNI"
+"users","remember_code","varchar(255)","YES",
+"users","created_on","int(11) unsigned","NO",
+"users","last_login","int(11) unsigned","YES",
+"users","active","tinyint(1) unsigned","YES",
+"users","is_immutable","tinyint(1) unsigned","NO",
+"users","first_name","varchar(50)","YES",
+"users","last_name","varchar(50)","YES",
+"users","company","varchar(100)","YES",
+"users","phone","varchar(20)","YES",
+"users","dark_mode","tinyint(1)","NO",
+"users_groups","id","int(11) unsigned","NO","PRI"
+"users_groups","user_id","int(11) unsigned","NO","MUL"
+"users_groups","group_id","mediumint(8) unsigned","NO","MUL"
